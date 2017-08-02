@@ -24,7 +24,7 @@ handleInputName(name) {
 handleAddUserName(user) {
    const newUsers = [...this.state.users];
    newUsers.push(user);
-    this.setState({users: newUsers})
+    this.setState({users: newUsers, name: ''})
 }
 
 handleRemoveUser(id) {
