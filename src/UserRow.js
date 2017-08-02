@@ -22,7 +22,7 @@ class UserRow extends Component {
     return (
       <div className='list-group-item'>
         <h3 className='d-inline col-lg-8'>{this.props.userName}</h3>
-        <button className='btn btn-danger d-inline col-lg-4' onClick={this.handleDelete} >Delete</button>
+        <button className='btn btn-danger d-inline col-lg-4' onClick={()=> this.props.handleRemoveUser(this.props.user.id)} >Delete</button>
       </div>
     );
   }

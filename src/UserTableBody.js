@@ -14,14 +14,14 @@ class UserTableBody extends Component {
 }
   render() {
     if (this.props.userName) {
-      this.props.rows.push(
-      <UserRow userName={this.props.userName} key={this.props.rows.length.toString()} />
+      this.props.users.push(
+      <UserRow userName={this.props.userName} key={this.props.users.id} onClick={()=> this.props.handleRemoveUser(this.props.user.id)}/>
     );
   }
 
     return (
       <div className='list-group row'>
-        {this.props.rows}
+        {this.props.users}
       </div>
     );
   }
