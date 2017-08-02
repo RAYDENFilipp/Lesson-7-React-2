@@ -5,6 +5,7 @@ import './UserTable.css';
 import UserTableBody from './UserTableBody';
 import AddUserBar from './AddUserBar';
 import SearchUserBar from './SearchUserBar';
+import * as actions from './actions/tableActions';
 
 class UserTable extends Component {
   constructor(props) {
@@ -30,13 +31,13 @@ handleSearchName(search) {
 }
 
 handleAddUserName(user) {
-   const newUsers = [...this.state.users];
+   const newUsers = [...this.props.users];
    newUsers.push(user);
     // this.setState({users: newUsers, name: ''})
 }
 
 handleRemoveUser(id) {
-   const newUsers = [...this.state.users];
+   const newUsers = [...this.props.users];
    const index = newUsers.findIndex(user => { return user.id === id});
    newUsers.splice(index, 1);
   //  this.setState({users: newUsers})
@@ -54,7 +55,7 @@ handleRemoveUser(id) {
   }
 }
 
-function mapDispatchToProps(dispath) {
+function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 }
 
