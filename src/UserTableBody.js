@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserRow from './UserRow';
 
-let rows = [];
+
 
 class UserTableBody extends Component {
 
@@ -14,14 +14,14 @@ class UserTableBody extends Component {
 }
   render() {
     if (this.props.userName) {
-      rows.push(
-      <UserRow userName={this.props.userName} key={rows.length.toString()} />
+      this.props.rows.push(
+      <UserRow userName={this.props.userName} key={this.props.rows.length.toString()} />
     );
   }
 
     return (
       <div className='list-group row'>
-        {rows}
+        {this.props.rows}
       </div>
     );
   }

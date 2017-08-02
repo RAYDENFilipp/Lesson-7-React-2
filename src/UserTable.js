@@ -8,7 +8,8 @@ class UserTable extends Component {
     super(props);
     this.state = {
       name: '',
-      output: ''
+      output: '',
+      rows: []
     }
 
     this.handleInputName = this.handleInputName.bind(this);
@@ -25,12 +26,16 @@ handleInputName(name) {
       name: ''
     });
 }
+
+handleDelete() {
+
+}
   
   render() {
     return (
       <div className="UserTable container">
       <AddUserBar name={this.state.name} onAdd={this.handleAddUserName} inputName={this.handleInputName} />
-      <UserTableBody userName={this.state.output} />
+      <UserTableBody userName={this.state.output} rows={this.state.rows}/>
       </div>
     );
   }
