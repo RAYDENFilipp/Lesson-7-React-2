@@ -9,7 +9,7 @@ class UserTableBody extends Component {
 
     return (
       <div className='list-group row'>
-        {this.props.users.map(user => <User user={user} handleRemoveUser={this.props.handleRemoveUser} />)}
+        {this.props.users.map(user => <User user={user} handleRemoveUser={this.props.handleRemoveUser} key={user.id} />)}
       </div>
     );
   }

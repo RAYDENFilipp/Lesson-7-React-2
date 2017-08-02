@@ -15,7 +15,7 @@ class AddUserBar extends Component {
 
   
   render() {
-const user = {name: this.props.name, id: new Date().getMilliseconds()};
+const user = {name: this.props.name, id: Date.now()};
     
     return (
       <div className='input-group'>
