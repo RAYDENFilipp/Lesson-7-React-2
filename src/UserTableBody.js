@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserRow from './UserRow';
+import User from './UserRow';
 
 
 
@@ -14,9 +14,7 @@ class UserTableBody extends Component {
 }
   render() {
     if (this.props.userName) {
-      this.props.users.push(
-      <UserRow userName={this.props.userName} key={this.props.users.id} onClick={()=> this.props.handleRemoveUser(this.props.user.id)}/>
-    );
+      this.props.users.map(user => <User user={user} handleRemove={this.props.handleRemoveUser} />);
   }
 
     return (
