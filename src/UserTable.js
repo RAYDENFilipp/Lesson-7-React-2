@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import './UserTable.css';
 import UserTableBody from './UserTableBody';
 import AddUserBar from './AddUserBar';
@@ -52,4 +54,16 @@ handleRemoveUser(id) {
   }
 }
 
-export default UserTable;
+function mapDispatchToProps(dispath) {
+  return bindActionCreators(actions, dispatch);
+}
+
+function mapStateToProps(state) {
+    return {
+        stateFromReducer: state
+    }; 
+}
+
+const UserTableConnected = connect(mapStateToProps, mapDispatchToProps)(UserTable);
+
+export default UserTableConnected;
