@@ -7,16 +7,12 @@ class AddUserBar extends Component {
     super(props);
 
     this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
   }
   
   handleNameChange(e) {
     this.props.inputName(e.target.value);
   }
 
-  handleButtonClick(e) {
-    this.props.onAdd(e.target.value);
-  }
   
   render() {
 const user = {name: this.props.name, id: new Date().getMilliseconds()};
