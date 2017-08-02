@@ -23,33 +23,44 @@ class UserTable extends Component {
   }
 
 handleInputName(name) {
+  this.props.InputName({name: name});
   // this.setState({name: name});
 }
 
 handleSearchName(search) {
+  this.props.SearchName({search: search});
   // this.setState({search: search});
 }
 
 handleAddUserName(user) {
-   const newUsers = [...this.props.users];
+  const { users } = this.props.stateFromReducer;
+   const newUsers = [...users];
    newUsers.push(user);
+   this.props.AddUserName({
+     users: newUsers, name: ''
+   });
     // this.setState({users: newUsers, name: ''})
 }
 
 handleRemoveUser(id) {
-   const newUsers = [...this.props.users];
+  const { users } = this.props.stateFromReducer;
+   const newUsers = [...users];
    const index = newUsers.findIndex(user => { return user.id === id});
    newUsers.splice(index, 1);
+     this.props.RemoveUser({
+       users: newUsers
+     });
   //  this.setState({users: newUsers})
 }
 
   
   render() {
+    const {name, search, users} = this.props.stateFromReducer;
     return (
       <div className="UserTable container">
-      <AddUserBar name={this.state.name} handleAddUserName={this.handleAddUserName} inputName={this.handleInputName} />
-      <SearchUserBar search={this.state.search} inputSearch={this.handleSearchName} />
-      <UserTableBody userName={this.state.name} users={this.state.users} handleRemoveUser={this.handleRemoveUser} userSearch={this.state.search}/>
+      <AddUserBar name={name} handleAddUserName={this.handleAddUserName} inputName={this.handleInputName} />
+      <SearchUserBar search={search} inputSearch={this.handleSearchName} />
+      <UserTableBody userName={name} users={users} handleRemoveUser={this.handleRemoveUser} userSearch={search}/>
       </div>
     );
   }

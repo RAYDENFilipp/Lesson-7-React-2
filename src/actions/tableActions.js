@@ -1,32 +1,32 @@
-export const InputName = (name) => {
+export function InputName(startParams) {
   const action = {
     type: 'INPUT_NAME',
-    name: name
+    name: startParams.name
   };
   return action;
 };
 
-export const SearchName = (search) => {
+export function SearchName(startParams) {
   const action = {
     type: 'SEARCH_NAME',
-    search: search
+    search: startParams.search
   };
   return action;
 };
 
-export const AddUserName = (user) => {
+export function AddUserName(startParams) {
   const action = {
     type: 'ADD_USER_NAME',
-    users: newUsers,
-    name: ''
+    users: startParams.users,
+    name: startParams.name
   };
   return action;
 };
 
-export const RemoveUser = (id) => {
+export function RemoveUser(startParams) {
   const action = {
     type: 'REMOVE_USER',
-    users: newUsers
+    users: startParams.users
   };
   return action;
 };
