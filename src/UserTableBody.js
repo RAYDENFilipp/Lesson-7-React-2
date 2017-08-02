@@ -1,27 +1,15 @@
 import React, { Component } from 'react';
-import UserRow from './UserRow';
+import User from './UserRow';
 
 
 
 class UserTableBody extends Component {
 
-  shouldComponentUpdate(nextProps) {
-  if (this.props.userName === nextProps.userName) {
-    return false;
-  }
-
-  return true;
-}
   render() {
-    if (this.props.userName) {
-      this.props.rows.push(
-      <UserRow userName={this.props.userName} key={this.props.rows.length.toString()} />
-    );
-  }
 
     return (
       <div className='list-group row'>
-        {this.props.rows}
+        {this.props.users.map(user => <User user={user} handleRemoveUser={this.props.handleRemoveUser} />)}
       </div>
     );
   }

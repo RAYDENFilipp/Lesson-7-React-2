@@ -9,33 +9,37 @@ class UserTable extends Component {
     this.state = {
       name: '',
       output: '',
-      rows: []
+      users: []
     }
 
     this.handleInputName = this.handleInputName.bind(this);
     this.handleAddUserName = this.handleAddUserName.bind(this);
+    this.handleRemoveUser = this.handleRemoveUser.bind(this);
   }
 
 handleInputName(name) {
   this.setState({name: name});
 }
 
-  handleAddUserName() {
-    this.setState({
-      output: this.state.name,
-      name: ''
-    });
+handleAddUserName(user) {
+   const newUsers = [...this.state.users];
+   newUsers.push(user);
+    this.setState({users: newUsers})
 }
 
-handleDelete() {
-
+handleRemoveUser(id) {
+   const newUsers = [...this.state.users];
+   const index = newUsers.findIndex(user => { return user.id === id});
+   newUsers.splice(index, 1);
+   this.setState({users: newUsers})
 }
+
   
   render() {
     return (
       <div className="UserTable container">
-      <AddUserBar name={this.state.name} onAdd={this.handleAddUserName} inputName={this.handleInputName} />
-      <UserTableBody userName={this.state.output} rows={this.state.rows}/>
+      <AddUserBar name={this.state.name} handleAddUserName={this.handleAddUserName} inputName={this.handleInputName} />
+      <UserTableBody userName={this.state.output} users={this.state.users} handleRemoveUser={this.handleRemoveUser}/>
       </div>
     );
   }
